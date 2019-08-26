@@ -1,0 +1,265 @@
+$themecolor: mediumaquamarine;
+$errorcolor: #f44336;
+$textcolor: rgba(0, 0, 0, 0.54);
+
+.main-container {
+  width: 100%;
+  height: 100%;
+}
+.login-form-screen {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+.music-main-page {
+  display: block;
+  background-image: url("/assets/images/bg2.jpg");
+  background-repeat: no-repeat;
+  background-color: black;
+  background-attachment: fixed;
+  background-position: center;
+  padding: 50px 0px;
+  height: 100%;
+  width: 100%;
+}
+.music-red {
+  background-color: red;
+}
+.music-green {
+  background-color: green;
+}
+.music-login-logo {
+  margin-left: 5%;
+}
+.music-login-logo img {
+  height: 50px;
+}
+.music-menu-bar-icon mat-icon {
+  font-size: 30px;
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+  color: white;
+  border: 2px white;
+}
+menu-bar {
+  padding: 10px;
+}
+.music-vertical-center {
+  margin-left: 90%;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+button.mat-menu-item {
+  outline: none;
+}
+button.mat-icon-button {
+  outline: none;
+}
+.music-login-page {
+  position: relative;
+  height: 100%;
+}
+.music-login-form {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 0px 50px -50px 0px;
+  background-color: gainsboro;
+  height: 600px;
+  width: 350px;
+  border-radius: 40px;
+  border: white ridge 10px;
+}
+.music-login-header {
+  position: relative;
+  margin: 0px;
+  background-color: $themecolor;
+  border-radius: 30px 30px 0px 0px;
+  height: 80px;
+  width: 100%;
+}
+.music-login-form-input {
+  position: relative;
+  margin: 0px;
+  background-color: white;
+  height: calc(100% - 160px);
+}
+.music-login-footer {
+  position: relative;
+  margin: 0px;
+  background-color: black;
+  border-radius: 0px 0px 30px 30px;
+  height: 80px;
+  width: 100%;
+}
+span {
+  display: inline-block;
+}
+.music-login-header span {
+  color: white;
+  font-size: 1.3em;
+  margin: auto;
+}
+.music-login-footer p {
+  color: white;
+  font-size: 0.9em;
+  margin: auto;
+}
+.music-login-footer span {
+  color: $themecolor;
+}
+
+.music-input-full-width {
+  width: 100%;
+  margin-bottom: 10px;
+}
+.music-login {
+  padding: 20px;
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.music-login-btn {
+  background-color: mediumaquamarine;
+  color: white;
+  font-size: 0.8em;
+  margin: 20px 0px 10px 0px !important;
+}
+button {
+  outline: none !important;
+}
+.music-forgot-password-link {
+  color: $themecolor;
+  font-size: 0.9em;
+  text-decoration: underline;
+  float: right;
+  padding: 0px;
+}
+.music-second-page {
+  background-color: $themecolor;
+  height: 100%;
+  width: 100%;
+}
+// .music-second-page .mat-grid{
+//   margin: 80px 50px;
+// }
+// .music-second-page .mat-grid .mat-grid-element{
+//   height: 350px;
+// }
+
+.music-second-page .grid-block {
+  margin: 80px 0px;
+  height: 200px;
+}
+.music-album-header {
+  height: 150px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  font-size: 2em;
+  font-family: "Times New Roman", Times, serif;
+  color: white;
+  text-transform: uppercase;
+}
+.music-album-header-content {
+  align-items: center;
+  display: flex;
+}
+
+.music-album-list .inner-col {
+  padding: 50px;
+  height: 100%;
+}
+.music-third-page {
+  height: 100%;
+  width: 100%;
+  background-color: black;
+}
+.music-third-page .header {
+  height: 100px;
+  width: 100%;
+  color: white;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 2em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.music-third-page .footer {
+  height: 600px;
+  width: 100%;
+}
+.music-third-page .footer .cols.one {
+  width: calc(50% - 150px);
+}
+.music-third-page .footer .cols.second {
+  width: 300px;
+  background:linear-gradient(115deg,black 50%, $themecolor 51%)
+}
+.music-third-page .footer .cols.third {
+  width: calc(50% - 150px);
+  background: $themecolor;
+}
+.music-third-page .footer .cols.third .header {
+  height: 100px;
+  width: 100%;
+  color: white;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 2em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contact-form-screen {
+  height: 500px;
+  width: 100%;
+  position: relative;
+}
+.music-contact-form {
+  position: absolute;
+  margin: -50px 0px 0px 50px;
+  background-color: gainsboro;
+  height: 600px;
+  width: 350px;
+  border-radius: 40px;
+  border: white ridge 10px;
+}
+.contact-form-key{
+  width:calc(40% - 20px);
+  color: white;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.5em;
+  text-align: right;
+  margin: 10px;
+  text-transform: uppercase;
+  border-right: 5px solid white;
+    padding-right: 20px;
+}
+.contact-form-value{
+  width:calc(50% - 20px);
+  color: white;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.5em;
+  margin: 10px;
+}
+.contact-form-row{
+  padding:10px;
+}
+.home-slider{
+  height:100%;
+  width:50%;
+  background-color: white;
+}
+// .home-slider img{
+//   height: 600px;
+//   width:100%;
+// }
+// .carousel.slide{
+//   outline: none;
+// }

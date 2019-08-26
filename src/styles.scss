@@ -1,0 +1,224 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import "~@angular/material/theming";
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$music-app-primary: mat-palette($mat-indigo);
+$music-app-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$music-app-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$music-app-theme: mat-light-theme($music-app-primary, $music-app-accent, $music-app-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($music-app-theme);
+
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+// variables for general
+$themecolor: mediumaquamarine;
+$darkthemecolor: #329a77;
+$errorcolor: #f44336;
+$textcolor:rgba(0, 0, 0, 0.54);
+
+// variables for snackbar
+$snackbarHeight: 70px;
+$snackbarColor: #fff;
+
+//snackbar css
+.primary-snackbar {
+  height: $snackbarHeight !important;
+  color: $snackbarColor;
+  border-left: 10px solid #2e6da4;
+  border-right: 10px solid #2e6da4;
+}
+.success-snackbar {
+  height: $snackbarHeight !important;
+  color: $snackbarColor;
+  border-left: 10px solid #4cae4c;
+  border-right: 10px solid #4cae4c;
+}
+.error-snackbar {
+  height: $snackbarHeight !important;
+  color: $snackbarColor;
+  border-left: 10px solid #d9534f;
+  border-right: 10px solid #d9534f;
+}
+.warning-snackbar {
+  height: $snackbarHeight !important;
+  color: $snackbarColor;
+  border-left: 10px solid #f0ad4e;
+  border-right: 10px solid #f0ad4e;
+}
+.info-snackbar {
+  height: $snackbarHeight !important;
+  color: $snackbarColor;
+  border-left: 10px solid #31b0d5;
+  border-right: 10px solid #31b0d5;
+}
+
+// changes in material imput field label and line
+.mat-focused .mat-form-field-underline .mat-form-field-ripple {
+  background: $themecolor;
+}
+.mat-focused .mat-form-field-infix .mat-form-field-label-wrapper .ng-star-inserted {
+  color: $themecolor;
+}
+.mat-form-field-invalid .mat-form-field-wrapper .mat-form-field-underline .mat-form-field-ripple {
+  background: $errorcolor;
+}
+.mat-form-field-invalid
+  .mat-form-field-wrapper
+  .mat-form-field-flex
+  .mat-form-field-infix
+  .mat-form-field-label-wrapper
+  .ng-star-inserted {
+  color: $errorcolor;
+}
+
+// changes in material checkbox
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
+.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: $themecolor !important;
+}
+.mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  background-color: $themecolor !important;
+}
+.mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  background-color: $themecolor !important;
+}
+.mat-checkbox-checked:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element,
+.mat-checkbox:active:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element {
+  background: $themecolor !important;
+}
+.mat-checkbox-checked:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element,
+.mat-checkbox:active:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element {
+  background: $themecolor !important;
+}
+.mat-checkbox-checked:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element,
+.mat-checkbox:active:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element {
+  background: $themecolor !important;
+}
+
+// change in snackbar
+.mat-simple-snackbar-action .mat-button {
+  color: #323232 !important;
+  background-color: white;
+  margin: 0px 5px 0px 10px;
+}
+.mat-simple-snackbar-action .mat-ripple-element {
+  background: #323232 !important;
+}
+
+// change in radio button
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle { border-color: $themecolor; }
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle { border-color: $themecolor; }
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle { border-color: $themecolor; }
+.mat-radio-button.mat-accent .mat-radio-inner-circle, .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple { background-color: $themecolor; }
+.mat-radio-button.mat-accent .mat-radio-inner-circle, .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple { background-color: $themecolor; }
+.mat-radio-button.mat-accent .mat-radio-inner-circle, .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple { background-color: $themecolor; }
+
+mat-radio-button {
+  margin: 0px 10px;
+}
+
+// stepper
+.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit { background-color: $themecolor; color: #fff; }
+.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit { background-color: $themecolor; color: #fff; }
+.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit { background-color: $themecolor; color: #fff; }
+
+// datepicker
+.mat-calendar-body-selected { background-color: $themecolor; color: white; }
+.mat-calendar-body-selected { background-color: $themecolor; color: #fff; }
+.mat-calendar-body-selected { background-color: $themecolor; color: #fff; }
+
+// change icon 
+.mat-icon.mat-primary { color: $themecolor; }
+
+//scroll
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: aquamarine; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $darkthemecolor; 
+}
+
+.theme-checkbox {
+  color: $textcolor;
+  font-size: 0.9em;
+}
+
+// maintain row
+.maintain-row {
+  margin: 0px !important;
+}
+
+// Buttons
+.music-fb-btn {
+  background-color: #3b5998;
+  color: white;
+  font-size: 0.8em;
+  margin: 10px 0px 0px 0px !important;
+}
+.music-google-btn {
+  background-color: white;
+  color: #DB4437;
+  font-size: 0.8em;
+  margin: 10px 0px 0px 0px !important;
+}
+.music-fb-btn img{
+  margin-right: 5px;
+}
+.music-google-btn img{
+  margin-right:5px;height:30px;
+}
+.header-text{
+  color:#424a60;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.0em;
+}
+.sub-header-text{
+  color:grey;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 0.8em;
+}
+.icon-image img{
+  height: 60px; margin-right:10px;
+}

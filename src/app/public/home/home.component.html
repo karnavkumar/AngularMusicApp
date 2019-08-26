@@ -1,0 +1,259 @@
+<div class="container-fluid main-container">
+    <div class="row" style="height:700px">
+        <div class="music-main-page">
+            <div class="row maintain-row">
+                <div class="col">
+                    <div class="music-login-logo">
+                        <img src="assets/images/logo.png" alt="Logo" />
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="music-vertical-center music-menu-bar-icon">
+                        <mat-menu #appMenu="matMenu">
+                            <button mat-menu-item>Settings</button>
+                            <button mat-menu-item>Help</button>
+                        </mat-menu>
+                        <button mat-icon-button [matMenuTriggerFor]="appMenu">
+                            <mat-icon>view_headline</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="row login-form-screen maintain-row">
+                <!-- <div class="home-slider">
+                    <ngb-carousel *ngIf="images">
+                        <ng-template ngbSlide>
+                            <div class="picsum-img-wrapper">
+                                <img [src]="images[0]" alt="Random first slide">
+                            </div>
+                            <div class="carousel-caption">
+                                <h3>First slide label</h3>
+                                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                            </div>
+                        </ng-template>
+                        <ng-template ngbSlide>
+                            <div class="picsum-img-wrapper">
+                                <img [src]="images[1]" alt="Random second slide">
+                            </div>
+                            <div class="carousel-caption">
+                                <h3>Second slide label</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </div>
+                        </ng-template>
+                        <ng-template ngbSlide>
+                            <div class="picsum-img-wrapper">
+                                <img [src]="images[2]" alt="Random third slide">
+                            </div>
+                            <div class="carousel-caption">
+                                <h3>Third slide label</h3>
+                                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                            </div>
+                        </ng-template>
+                    </ngb-carousel>
+                </div> -->
+                <div class="music-login-form">
+                    <div class="row music-login-header w-100">
+                        <span>Login to your account</span>
+                    </div>
+                    <div class="row music-login-form-input w-100">
+                        <div class="music-login">
+                            <form [formGroup]="loginForm">
+                                <mat-form-field class="music-input-full-width">
+                                    <input matInput placeholder="Email" formControlName="email" autocomplete="off">
+                                    <mat-hint>e:g music@audio.com</mat-hint>
+                                    <mat-error
+                                        *ngIf="loginForm.get('email').hasError('email') && !loginForm.get('email').hasError('required')">
+                                        Please enter a valid email address
+                                    </mat-error>
+                                    <mat-error *ngIf="loginForm.get('email').hasError('required')">
+                                        Email is <strong>required</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                                <mat-form-field class="music-input-full-width">
+                                    <input matInput placeholder="Password" formControlName="password" autocomplete="off"
+                                        [type]="passwordHide ? 'password' : 'text'">
+                                    <mat-hint>e:g 12music46@$</mat-hint>
+                                    <button mat-icon-button matSuffix (click)="passwordHide = !passwordHide"
+                                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="passwordHide">
+                                        <mat-icon>{{passwordHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                    </button>
+                                    <mat-error
+                                        *ngIf="loginForm.get('password').hasError('minlength') && !loginForm.get('password').hasError('required')">
+                                        Please enter minimum 6 digits password
+                                    </mat-error>
+                                    <mat-error *ngIf="loginForm.get('password').hasError('required')">
+                                        Password is <strong>required</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                                <div class="row">
+                                    <div class="col">
+                                        <mat-checkbox class="theme-checkbox" formControlName="rememberMe">Remember
+                                            Me
+                                        </mat-checkbox>
+                                    </div>
+                                    <div class="col">
+                                        <a routerLink="." class="music-forgot-password-link"
+                                            (click)="openForgotPassword()">Forgot Password?</a>
+                                    </div>
+                                </div>
+                                <button type="submit" mat-stroked-button
+                                    class="music-input-full-width music-no-outline music-login-btn"
+                                    [disabled]="!loginForm.valid" (click)="onSubmit()">Login</button>
+                            </form>
+                            <button mat-stroked-button class="music-input-full-width music-no-outline music-fb-btn"
+                                (click)="signInWithFB()"><img src="assets/images/fb-icon.png"
+                                    alt="fbicon" />Facebook</button>
+                            <button mat-stroked-button class="music-input-full-width music-no-outline music-google-btn"
+                                (click)="signInWithGoogle()"><img src="assets/images/google-plus-icon.svg"
+                                    alt="fbicon" />Google</button>
+                            <!-- <button mat-stroked-button class="music-input-full-width music-no-outline music-fb-btn"
+                                (click)="signOut()">logout</button> -->
+                        </div>
+                    </div>
+                    <div class="row music-login-footer">
+                        <p>Don't have account? <span><button mat-stroked-button
+                                    class="music-input-full-width music-no-outline music-register-btn"
+                                    (click)="openRegister()">Register</button></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="music-second-page">
+            <!-- <mat-grid-list [cols]="breakpoint" rowHeight="3:1" class="mat-grid" [gutterSize]="'50px'" (window:resize)="onResize($event)">
+                <mat-grid-tile class="mat-grid-element music-red">1</mat-grid-tile>
+                <mat-grid-tile class="mat-grid-element music-green">2</mat-grid-tile>
+                <mat-grid-tile class="mat-grid-element music-red">3</mat-grid-tile>
+            </mat-grid-list> -->
+            <div class="row w-100 maintain-row music-album-header">
+                <div class="music-album-header-content icon-image"><img
+                        src="../../../assets/images/music-icon-3.svg"><span>Music Albums</span></div>
+            </div>
+            <div class="row w-100 maintain-row music-album-list">
+                <div class="col-sm-4">
+                    <div class="inner-col">
+                        <music-album-list>
+                        </music-album-list>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="inner-col">
+                        <music-album-list>
+                        </music-album-list>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="inner-col">
+                        <music-album-list>
+                        </music-album-list>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="music-third-page">
+            <div class="row header icon-image maintain-row">
+                <img src="../../../assets/images/grid-world.svg" />
+                <span>Connect with Us</span>
+            </div>
+            <location-map></location-map>
+            <div class="row footer maintain-row">
+                <div class="cols one">
+                    <div class="row contact-form-screen maintain-row">
+                        <div class="music-contact-form">
+                            <div class="row music-login-header w-100">
+                                <span>Inquiry Form</span>
+                            </div>
+                            <div class="row music-login-form-input w-100">
+                                <div class="music-login">
+                                    <form [formGroup]="contactForm">
+                                        <div>
+                                            <mat-form-field class="music-input-full-width">
+                                                <input matInput placeholder="Name" formControlName="name">
+                                                <mat-hint>e:g Jhon smith</mat-hint>
+                                                <mat-error *ngIf="contactForm.get('name').hasError('required')">
+                                                    Name is <strong>required</strong>
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <div>
+                                            <mat-form-field class="music-input-full-width">
+                                                <input matInput placeholder="Email" formControlName="email"
+                                                    autocomplete="off">
+                                                <mat-hint>e:g music@audio.com</mat-hint>
+                                                <mat-error
+                                                    *ngIf="contactForm.get('email').hasError('email') && !contactForm.get('email').hasError('required')">
+                                                    Please enter a valid email address
+                                                </mat-error>
+                                                <mat-error *ngIf="contactForm.get('email').hasError('required')">
+                                                    Email is <strong>required</strong>
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <div>
+                                            <mat-form-field class="music-input-full-width">
+                                                <input matInput placeholder="Reason" formControlName="reason">
+                                                <mat-hint>e:g Download Music</mat-hint>
+                                                <mat-error *ngIf="contactForm.get('reason').hasError('required')">
+                                                    Reason is <strong>required</strong>
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <div>
+                                            <mat-form-field class="music-input-full-width aboutus-margin">
+                                                <textarea matInput placeholder="Description"
+                                                    formControlName="description"></textarea>
+                                                <mat-hint>e:g I want to download pop music</mat-hint>
+                                            </mat-form-field>
+                                        </div>
+                                        <button type="submit" mat-stroked-button
+                                            class="music-input-full-width music-no-outline music-login-btn"
+                                            [disabled]="!contactForm.valid" (click)="onSubmit()">Submit</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="row music-login-footer">
+                                <p>Thanks for being connected with us...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cols second">
+                </div>
+                <div class="cols third">
+                    <div class="row header icon-image maintain-row">
+                        <img src="../../../assets/images/technical-support.svg" />
+                        <span>Support</span>
+                    </div>
+                    <div class="row maintain-row contact-form-row">
+                        <div class="cols contact-form-key">
+                            <span>Email Id</span>
+                        </div>
+                        <div class="cols contact-form-value">
+                            <span>music@grr.la</span>
+                        </div>
+                    </div>
+                    <div class="row maintain-row contact-form-row">
+                        <div class="cols contact-form-key">
+                            <span>Address</span>
+                        </div>
+                        <div class="cols contact-form-value">
+                            <span>201, 2nd Floor, Dev Arc Mall, Near Iskcon Bridge, S.G.Highway, Ahmedabad, Gujarat
+                                380015</span>
+                        </div>
+                    </div>
+                    <div class="row maintain-row contact-form-row">
+                        <div class="cols contact-form-key">
+                            <span>Contact No</span>
+                        </div>
+                        <div class="cols contact-form-value">
+                            <span>(+91) 999 999 9999</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="list-main-container">
+    <div class="row maintain-row list-header">
+        <div class="cols">
+            <img src="../../../assets/images/music-player-icon3.png" />
+        </div>
+        <div class="cols">
+            <span>Top List</span>
+        </div>
+    </div>
+    <div class="row maintain-row list-body">
+        <div class="list-body-content">
+            <mat-nav-list class="song-nav-list">
+                <mat-list-item *ngFor="let song of songs" class="song-list">
+                    <div class="row maintain-row song-list-block">
+                        <div class="cols block1">
+                            <img src="../../../assets/images/music-player-icon3.png" />
+                        </div>
+                        <div class="cols block3">
+                            <div class="song-list-vl"></div>
+                        </div>
+                        <div class="cols block2">
+                            <div class="row maintain-row header-text">
+                                <span>{{song.name}}</span>
+                            </div>
+                            <div class="row maintain-row sub-header-text">
+                                <div class="cols details">
+                                    <span>{{song.details}}</span>
+                                </div>
+                                <div class="cols duration">
+                                    <span>{{song.duration}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cols block3">
+                            <button mat-icon-button>
+                                <mat-icon>more_vert</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </mat-list-item>
+            </mat-nav-list>
+        </div>
+    </div>
+    <div class="row maintain-row list-footer">
+        <button mat-stroked-button class="" (click)="signInWithGoogle()">View All</button>
+    </div>
+</div>

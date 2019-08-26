@@ -1,0 +1,216 @@
+<div class="dialog-register">
+    <div class="row register-dialog-header w-100">
+        <span>Register</span>
+    </div>
+    <div class="row register-dialog-form-input w-100">
+        <div class="register-dialog">
+            <!-- <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                <mat-form-field class="register-dialog-input-full-width">
+                    <input matInput placeholder="Email" formControlName="email" autocomplete="off">
+                    <mat-hint>e:g music@audio.com</mat-hint>
+                    <mat-error
+                        *ngIf="registerForm.get('email').hasError('email') && !registerForm.get('email').hasError('required')">
+                        Please enter a valid email address
+                    </mat-error>
+                    <mat-error *ngIf="registerForm.get('email').hasError('required')">
+                        Email is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+                <button type="submit" mat-stroked-button class="register-dialog-input-full-width register-dialog-no-outline register-dialog-btn"
+                    [disabled]="!registerForm.valid">Register</button>
+            </form> -->
+            <mat-vertical-stepper [linear]="isLinear" #stepper>
+                <mat-step [stepControl]="personalForm" class="stepper-fixed">
+                    <form [formGroup]="personalForm">
+                        <ng-template matStepLabel>Personal Details</ng-template>
+                        <div>
+                            <mat-form-field class="register-dialog-input-full-width">
+                                <input matInput placeholder="Name" formControlName="name">
+                                <mat-hint>e:g Jhon smith</mat-hint>
+                                <mat-error *ngIf="personalForm.get('name').hasError('required')">
+                                    Name is <strong>required</strong>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <mat-form-field class="register-dialog-input-full-width aboutus-margin">
+                                <textarea matInput placeholder="About Me" formControlName="aboutMe"></textarea>
+                                <mat-hint>e:g I have a cool personality</mat-hint>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <mat-form-field class="register-dialog-input-full-width">
+                                <input matInput [matDatepicker]="picker" placeholder="Date of Birth"
+                                    formControlName="dob" [max]="maxDate">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                                <mat-error *ngIf="personalForm.get('dob').hasError('required')">
+                                    Date of birth is <strong>required</strong>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="row gender-container">
+                            <div class="cols gender-text">
+                                <span>Gender</span>
+                            </div>
+                            <div class="cols">
+                                <mat-radio-group aria-label="Gender" formControlName="gender">
+                                    <mat-radio-button value="M">Male</mat-radio-button>
+                                    <mat-radio-button value="F">Female</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                        </div>
+                        <div>
+                            <button mat-stroked-button matStepperNext
+                                class="register-dialog-input-full-width register-dialog-no-outline register-dialog-step-btn"
+                                [disabled]="!personalForm.valid">Next</button>
+                        </div>
+                    </form>
+                </mat-step>
+                <mat-step [stepControl]="accountForm" class="stepper-fixed">
+                    <form [formGroup]="accountForm">
+                        <ng-template matStepLabel>Account Details</ng-template>
+                        <div>
+                            <mat-form-field class="register-dialog-input-full-width">
+                                <input matInput placeholder="Email" formControlName="email" autocomplete="off">
+                                <mat-hint>e:g music@audio.com</mat-hint>
+                                <mat-error
+                                    *ngIf="accountForm.get('email').hasError('email') && !accountForm.get('email').hasError('required')">
+                                    Please enter a valid email address
+                                </mat-error>
+                                <mat-error *ngIf="accountForm.get('email').hasError('required')">
+                                    Email is <strong>required</strong>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="phoneNumber-field">
+                            <!-- <div class="phoneNumber-text">
+                                <span>Phone Number</span>
+                            </div> -->
+                            <!-- <international-phone-number class="pnone-number-textbox" formControlName="phoneNumber"
+                                placeholder="Phone Number" [maxlength]="20" [defaultCountry]="'in'"
+                                [allowedCountries]="['in', 'ca', 'us']"></international-phone-number> -->
+                            <mat-form-field class="register-dialog-input-full-width">
+                                <input matInput type="text" formControlName="phoneNumber" placeholder="Phone number"
+                                    ng2TelInput [ng2TelInputOptions]="{initialCountry: 'in'}"
+                                    (hasError)="hasError($event)" (ng2TelOutput)="getNumber($event)"
+                                    (intlTelInputObject)="telInputObject($event)"
+                                    (countryChange)="onCountryChange($event)" />
+                                <mat-error *ngIf="accountForm.get('phoneNumber').hasError('required')">
+                                    Phone number is <strong>required</strong>
+                                </mat-error>
+                                <!-- <div
+                                    *ngIf="accountForm.get('phoneNumber').invalid && accountForm.get('phoneNumber').touched">
+                                    <span class="error-message"
+                                        *ngIf="accountForm.get('phoneNumber').hasError('required')">
+                                        Phone number is <strong>required</strong>
+                                    </span>
+                                </div> -->
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex>
+                            <mat-form-field class="register-dialog-input-full-width">
+                                <input matInput placeholder="Password" formControlName="password" autocomplete="off"
+                                    #password [type]="passwordHide ? 'password' : 'text'"
+                                    validateEqual="confirmPassword" reverse="true">
+                                <mat-hint aria-live="polite">
+                                    e:g muSic@lWor1d
+                                </mat-hint>
+                                <mat-hint align="end" aria-live="polite">
+                                    {{strengthValue}}
+                                </mat-hint>
+                                <!-- <input matInput placeholder="Password" formControlName="password" autocomplete="off"
+                                            #password [type]="passwordHide ? 'password' : 'text'"
+                                            (focus)="isPasswordFocus = !isPasswordFocus"
+                                            (focusout)="isPasswordFocus = !isPasswordFocus"> -->
+                                <!-- <mat-hint>e:g 12music46@$</mat-hint> -->
+                                <button mat-icon-button matSuffix (click)="passwordHide = !passwordHide"
+                                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="passwordHide">
+                                    <mat-icon>{{passwordHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                                <mat-error
+                                    *ngIf="accountForm.get('password').hasError('minlength') && !accountForm.get('password').hasError('required')">
+                                    Please enter minimum 6 digits password
+                                </mat-error>
+                                <mat-error *ngIf="accountForm.get('password').hasError('required')">
+                                    Password is <strong>required</strong>
+                                </mat-error>
+                            </mat-form-field>
+                            <div style="margin-top: -5px;">
+                                <mat-password-strength #passwordComponent
+                                    (onStrengthChanged)="onStrengthChanged($event)" [password]="password.value">
+                                </mat-password-strength>
+                                <!-- <mat-password-strength-info [passwordComponent]="passwordComponent" *ngIf="isPasswordFocus">
+                                        </mat-password-strength-info> -->
+                            </div>
+                        </div>
+                        <div style="margin-top: 15px;">
+                            <mat-form-field class="register-dialog-input-full-width">
+                                <input matInput placeholder="Confirm Password" formControlName="confirmPassword"
+                                    autocomplete="off" [type]="confirmPasswordHide ? 'password' : 'text'"
+                                    validateEqual="password">
+                                <button mat-icon-button matSuffix (click)="confirmPasswordHide = !confirmPasswordHide"
+                                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="confirmPasswordHide">
+                                    <mat-icon>{{confirmPasswordHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                                <mat-error *ngIf="accountForm.get('confirmPassword').hasError('required')">
+                                    Confirm Password is <strong>required</strong>
+                                </mat-error>
+                                <mat-error *ngIf="!accountForm.get('confirmPassword').hasError('required')"
+                                    [hidden]="accountForm.get('confirmPassword').valid ||  (accountForm.get('confirmPassword').pristine && !accountForm.submitted)">
+                                    Password is <strong>not matched</strong>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <button mat-stroked-button matStepperNext
+                                class="register-dialog-input-full-width register-dialog-no-outline register-dialog-step-btn"
+                                [disabled]="!accountForm.valid">Next</button>
+                        </div>
+                    </form>
+                </mat-step>
+                <mat-step [stepControl]="completedForm" class="stepper-fixed">
+                    <form [formGroup]="completedForm">
+                        <ng-template matStepLabel>Completed</ng-template>
+                        <div>
+                            <span class="completed-text">Your registration process has been completed
+                                successfully.</span>
+                        </div>
+                        <div>
+                            <mat-checkbox class="theme-checkbox" formControlName="acceptTermsAndCondition"
+                                (change)="isAcceptTC = !isAcceptTC">Accept Terms and Conditon
+                            </mat-checkbox>
+                        </div>
+                        <div>
+                            <mat-checkbox class="theme-checkbox" formControlName="subscribeNewsLetters">Subscribe News
+                                Letters
+                            </mat-checkbox>
+                        </div>
+                        <div>
+                            <button mat-stroked-button
+                                class="register-dialog-input-full-width register-dialog-no-outline register-dialog-step-btn"
+                                [disabled]="!isAcceptTC">Register</button>
+                        </div>
+                    </form>
+                </mat-step>
+            </mat-vertical-stepper>
+            <button mat-stroked-button
+                class="register-dialog-input-full-width register-dialog-no-outline music-fb-btn"><img
+                    src="assets/images/fb-icon.png" alt="fbicon" (click)="signInWithFB()"/>Facebook</button>
+            <button mat-stroked-button class="music-input-full-width music-no-outline music-google-btn"
+                (click)="signInWithGoogle()"><img src="assets/images/google-plus-icon.svg"
+                    alt="fbicon" />Google</button>
+        </div>
+    </div>
+    <div class="row register-dialog-footer">
+        <p>
+            <button mat-icon-button (click)="onNoClick()">
+                <mat-icon>backspace</mat-icon>
+            </button>
+            back</p>
+    </div>
+</div>
+<!-- <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+</div> -->
